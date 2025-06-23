@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>UCBA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f5f5;
+    }
+    .estilo-cartel {
+      background: #cda49c url('https://i.imgur.com/Oe4iQhA.png') repeat;
+      border-radius: 20px;
+      padding: 15px;
+      margin: 20px auto;
+      max-width: 350px;
+      position: relative;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      text-align: center;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+    }
+    .estilo-cartel img {
+      width: 100%;
+      border-radius: 10px;
+      border: 6px solid #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+    .etiqueta-hueso {
+      background: #d2a860;
+      color: #fff;
+      font-weight: bold;
+      padding: 8px 16px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      border-radius: 20px;
+      font-size: 14px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    }
+    .animal-info {
+      margin-top: 12px;
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    header {
+      background-color: #fbf5f5;
+      color: rgb(144, 14, 14);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    header img {
+      position: absolute;
+      left: 20px;
+      top: 10px;
+      width: 80px;
+      border-radius: 8px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    nav {
+      background-color: #911111;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px 0;
+    }
+    nav button {
+      background-color: #10aa50;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    nav button:hover, nav button.active {
+      background-color: #1b4d13;
+    }
+    .contenedor {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .seccion {
+      background: white;
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 8px solid #5b1010;
+      display: none;
+    }
+    .seccion.active {
+      display: block;
+    }
+    h2 {
+      color: #5b1010;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .animal-card {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      align-items: center;
+    }
+    .animal-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 3px solid #5b1010;
+    }
+    .btn {
+      background: #33691e;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background: #1b4d13;
+    }
+    a {
+      color: #33691e;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      header img {
+        width: 60px;
+        top: 15px;
+      }
+      h1 {
+        font-size: 18px;
+      }
+      .animal-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .animal-card img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://github.com/oscarayala512/bienestar-animal/blob/main/logonuevo.jpg?raw=true" alt="Logo Ixtapaluca" />
+    <div style="padding-left: 130px;">
+      <h1>UCBA</h1>
+      <h2>UNIDAD DE CONTROL Y BIENESTAR ANIMAL</h2>
+    </div>
+  </header>
+
+  <nav>
+    <button class="menu-btn active" data-target="inicio">Inicio</button>
+    <button class="menu-btn" data-target="vacunacion">Campaña de Vacunación</button>
+    <button class="menu-btn" data-target="adopciones">Adopciones</button>
+    <button class="menu-btn" data-target="denuncias">Denuncias</button>
+    <button class="menu-btn" data-target="extraviados">Animales Extraviados</button>
+  </nav>
+
+  <div class="contenedor">
+    <section id="inicio" class="seccion active">
+      <h2>Bienvenido a Control y Bienestar Animal</h2>
+      <p>En esta plataforma puedes informarte sobre las campañas gratuitas de vacunación para mascotas, consultar los animales disponibles para adopción, realizar denuncias por maltrato animal, y reportar animales extraviados. Navega por las diferentes secciones usando el menú para participar y ayudar a nuestra comunidad.</p>
+    </section>
+
+   <section id="vacunacion" class="seccion">
+  <h2>Campaña de Vacunación</h2>
+  <p>Vacuna a tu mascota del <strong>01 de junio al 17 de julio</strong> en diferentes puntos de Ixtapaluca. ¡Totalmente gratis!</p>
+  <p>Consulta los puestos oficiales en el sitio del 
+    <a href="https://www.ixtapaluca.gob.mx" target="_blank" style="color: green; font-weight: bold;">
+      Municipio de Ixtapaluca
+    </a> o visita nuestra página de 
+    <a href="https://www.facebook.com/share/1CxKh5fXhJ/" target="_blank" style="color: #1877f2; font-weight: bold;">
+      Bienestar Animal Ixtapaluca en Facebook
+    </a>.
+  </p>
+
+  <!-- Plugin de página de Facebook -->
+  <div style="margin-top: 20px;">
+    <iframe 
+      src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBienestarAnimalIxtapaluca&tabs=timeline&width=500&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+      width="100%" height="300" style="border:none;overflow:hidden" 
+      scrolling="no" frameborder="0" allowfullscreen="true"
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+    </iframe>
+  </div>
+</section>
+
+
+
+    <section id="adopciones" class="seccion">
+      <h2>Adopciones</h2>
+      <button class="btn" onclick="document.getElementById('formAdopcion').style.display='block'">Registrar Adopción</button>
+      <form id="formAdopcion" style="display:none; margin-top:20px;">
+        <label for="nombreAnimalAdopcion">Nombre del animal:</label>
+        <input type="text" id="nombreAnimalAdopcion" placeholder="Ej. Toby" />
+        <label for="edadAnimal">Edad:</label>
+        <input type="text" id="edadAnimal" placeholder="Ej. 3 años" />
+        <label for="descripcionAdopcion">Descripción:</label>
+        <textarea id="descripcionAdopcion" rows="3" placeholder="Raza, comportamiento, etc."></textarea>
+        <label for="fotoAdopcion">Foto:</label>
+        <input type="file" id="fotoAdopcion" />
+        <label for="esterilizado">¿Está esterilizado?</label>
+        <select id="esterilizado"><option>Sí</option><option>No</option></select>
+        <label for="fechaAdopcion">Fecha de publicación:</label>
+        <input type="date" id="fechaAdopcion" />
+        <input type="hidden" id="adoptado" value="No" />
+        <label for="vacunas">Vacunas recibidas:</label>
+        <input type="text" id="vacunas" placeholder="Rabia, Parvo..." />
+        <label for="contacto">Nombre de contacto:</label>
+        <input type="text" id="contacto" placeholder="Ej. Juan Pérez" />
+        <label for="telefono">Número de contacto:</label>
+        <input type="tel" id="telefono" placeholder="Ej. 555-123-4567" />
+        <label><input type="checkbox" id="origenIxtapaluca" /> Es de Ixtapaluca</label>
+        <button type="button" class="btn">Publicar para adopción</button>
+      </form>
+
+      <h3>Animales disponibles en adopción</h3>
+      <div class="animal-card">
+        <span class="etiqueta-hueso">HEMBRA</span>
+        <img src="https://placedog.net/300/300?id=10" alt="Perrita en adopción" />
+        <div class="animal-info">
+          <strong>Nombre:</strong> Daisy<br />
+          <strong>Edad:</strong> 8 meses<br />
+          <strong>Esterilizada:</strong> Sí<br />
+          <strong>Descripción:</strong> Juguetona, cariñosa y muy sociable. Ideal para familias con niños.
+        </div>
+      </div>
+    </section>
+
+    <section id="denuncias" class="seccion">
+      <h2>Denunciar Maltrato Animal</h2>
+      <form>
+        <label for="denunciante">Tu nombre:</label>
+        <input type="text" id="denunciante" placeholder="Ej. Juan Pérez" />
+        <label for="descripcion">Descripción del hecho:</label>
+        <textarea id="descripcion" rows="3" placeholder="Describe lo que viste..."></textarea>
+        <label for="ubicacion">Ubicación:</label>
+        <input type="text" id="ubicacion" placeholder="Ej. Calle Robles, Col. Morelos" />
+        <label for="evidencia">Evidencia (opcional):</label>
+        <input type="file" id="evidencia" />
+        <button type="button" class="btn">Enviar denuncia</button>
+      </form>
+    </section>
+
+    <section id="extraviados" class="seccion">
+      <h2>Animales Extraviados</h2>
+      <h3>¿Deseas reportar uno?</h3>
+      <form>
+        <label for="nombreAnimal">Nombre del animal:</label>
+        <input type="text" id="nombreAnimal" placeholder="Ej. Rocky" />
+        <label for="descripcionAnimal">Descripción:</label>
+        <textarea id="descripcionAnimal" rows="3" placeholder="Color, tamaño, raza..."></textarea>
+        <label for="ultimaVista">Última ubicación vista:</label>
+        <input type="text" id="ultimaVista" placeholder="Ej. Frente al mercado San Buenaventura" />
+        <label for="fotoAnimal">Foto del animal:</label>
+        <input type="file" id="fotoAnimal" />
+        <label for="fechaExtravio">Fecha de publicación:</label>
+        <input type="date" id="fechaExtravio" />
+        <button type="button" class="btn">Reportar extraviado</button>
+      </form>
+      <h3>Animales reportados</h3>
+      <div class="animal-card estilo-cartel">
+        <img src="https://github.com/oscarayala512/bienestar-animal/blob/main/perro.jpg?raw=true" alt="Rocky" />
+        <div class="etiqueta-hueso">MACHO</div>
+        <div class="animal-info">
+          <strong>Edad:</strong> 8 meses<br />
+          <strong>Esterilizado</strong><br />
+          <strong>Última vista:</strong> Frente al mercado San Buenaventura<br />
+          <strong>Descripción:</strong> Blanco con manchas negras, tranquilo.<br />
+          <strong>Fecha de publicación:</strong> 2025-05-27
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const botonesMenu = document.querySelectorAll('.menu-btn');
+    const secciones = document.querySelectorAll('.seccion');
+    botonesMenu.forEach(btn => {
+      btn.addEventListener('click', () => {
+        botonesMenu.forEach(b => b.classList.remove('active'));
+        secciones.forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.getAttribute('data-target')).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
