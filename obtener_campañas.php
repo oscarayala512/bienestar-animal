@@ -6,7 +6,7 @@ $sql = "SELECT colonia, fecha, horario, ubicacion, vacunas FROM campañas";
 $resultado = $conn->query($sql);
 
 $campañas = [];
-
+//registro de campañas 
 while ($fila = $resultado->fetch_assoc()) {
     $campañas[] = [
         "colonia" => $fila["colonia"],
