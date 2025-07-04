@@ -12,7 +12,7 @@ if (isset($_FILES['fotoAnimal']) && $_FILES['fotoAnimal']['error'] == 0) {
     $ruta = $directorio . $foto;
     move_uploaded_file($_FILES['fotoAnimal']['tmp_name'], $ruta);
 }
-
+//info de extraviados 
 $sql = "INSERT INTO extraviados (nombre_animal, descripcion, ultima_ubicacion, foto) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssss", $nombre, $descripcion, $ubicacion, $foto);
