@@ -245,6 +245,15 @@
         <label><input type="checkbox" id="origenIxtapaluca" /> Es de Ixtapaluca</label>
         <button type="button" class="btn">Publicar para adopción</button>
       </form>
+<script>
+  function adoptarAnimal(nombre) {
+    // Puedes reemplazar alert por un mensaje más estilizado si lo deseas
+    alert("¡Gracias por adoptar a " + nombre + "! Pronto nos pondremos en contacto contigo.");
+    
+    // Aquí podrías ocultar el animal o marcarlo como adoptado visualmente si lo deseas
+    // Ejemplo: document.querySelector('.animal-card').style.display = 'none';
+  }
+</script>
 
       <h3>Animales disponibles en adopción</h3>
       <div class="animal-card">
@@ -256,6 +265,24 @@
           <strong>Esterilizada:</strong> Sí<br />
           <strong>Descripción:</strong> Juguetona, cariñosa y muy sociable. Ideal para familias con niños.
         </div>
+          <button class="btn" onclick="mostrarFormulario('formAdoptarDaisy')">Adoptar</button>
+
+<form id="formAdoptarDaisy" class="form-fantasma" style="display:none; margin-top:10px;">
+  <label for="nombreAdoptante">Tu nombre:</label>
+  <input type="text" id="nombreAdoptante" placeholder="Ej. Laura Gómez" required />
+
+  <label for="telefonoAdoptante">Teléfono de contacto:</label>
+  <input type="tel" id="telefonoAdoptante" placeholder="Ej. 555-789-1234" required />
+
+  <label for="porqueAdoptar">¿Por qué deseas adoptarlo?</label>
+  <textarea id="porqueAdoptar" rows="2" placeholder="Ej. Me encantan los perros pequeños..."></textarea>
+
+  <label for="ubicacionCasa">¿Dónde vivirá?</label>
+  <input type="text" id="ubicacionCasa" placeholder="Ej. San Buenaventura, casa con patio" required />
+
+  <button type="button" class="btn" onclick="enviarAdopcion('formAdoptarDaisy')">Enviar solicitud</button>
+</form>
+
       </div>
     </section>
 
@@ -299,9 +326,59 @@
           <strong>Esterilizado</strong><br />
           <strong>Última vista:</strong> Frente al mercado San Buenaventura<br />
           <strong>Descripción:</strong> Blanco con manchas negras, tranquilo.<br />
-          <strong>Fecha de publicación:</strong> 2025-05-27
+          <strong>Fecha de publicación:</strong> 2025-05-27 <br/>
+        <button class="btn" onclick="mostrarFormulario('infoRocky')">Tengo información</button>
+
+<form id="infoRocky" class="form-fantasma" style="display:none; margin-top:10px;">
+  <label for="nombreInformante">Tu nombre:</label>
+  <input type="text" id="nombreInformante" placeholder="Ej. Juan Pérez" required />
+
+  <label for="telefonoInformante">Tu número de contacto:</label>
+  <input type="tel" id="telefonoInformante" placeholder="Ej. 555-123-4567" required />
+
+  <label for="ubicacionVista">¿Dónde lo viste?</label>
+  <input type="text" id="ubicacionVista" placeholder="Ej. Cerca del parque" required />
+
+  <label for="comentarios">Comentario adicional:</label>
+  <textarea id="comentarios" rows="2" placeholder="Algún detalle importante..."></textarea>
+
+  <button type="button" class="btn" onclick="enviarInformacion('infoRocky')">Enviar</button>
+</form>
+
         </div>
       </div>
+      <script>
+  function mostrarFormulario(idFormulario) {
+    const form = document.getElementById(idFormulario);
+    form.style.display = (form.style.display === 'none') ? 'block' : 'none';
+  }
+
+  function enviarInformacion(idFormulario) {
+    alert("¡Gracias por tu información! Será de gran ayuda para localizar al animal.");
+    
+    // Ocultar y resetear el formulario
+    const form = document.getElementById(idFormulario);
+    form.reset();
+    form.style.display = 'none';
+  }
+</script>
+<script>
+  function mostrarFormulario(idFormulario) {
+    const form = document.getElementById(idFormulario);
+    form.style.display = (form.style.display === 'none') ? 'block' : 'none';
+  }
+
+  function enviarAdopcion(idFormulario) {
+    alert("¡Gracias por tu interés en adoptar! Pronto nos pondremos en contacto contigo.");
+    
+    // Ocultar y limpiar el formulario
+    const form = document.getElementById(idFormulario);
+    form.reset();
+    form.style.display = 'none';
+  }
+</script>
+
+
     </section>
   </div>
 
