@@ -9,7 +9,17 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #f8f5f5;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideIn 1s forwards;
     }
+    @keyframes fadeSlideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .estilo-cartel {
       background: #cda49c url('https://i.imgur.com/Oe4iQhA.png') repeat;
       border-radius: 20px;
@@ -82,7 +92,7 @@
       font-weight: bold;
       transition: background-color 0.3s ease;
     }
-    nav button:hover, nav button.active {
+    nav button:hover {
       background-color: #1b4d13;
     }
     .contenedor {
@@ -90,16 +100,12 @@
       max-width: 1000px;
       margin: auto;
     }
-    .seccion {
+    section {
       background: white;
       margin-bottom: 30px;
       padding: 20px;
       border-radius: 10px;
       border-left: 8px solid #5b1010;
-      display: none;
-    }
-    .seccion.active {
-      display: block;
     }
     h2 {
       color: #5b1010;
@@ -169,6 +175,55 @@
         height: auto;
       }
     }
+
+    /* Modal popup */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      overflow: auto;
+      animation: modalFadeIn 0.3s ease forwards;
+    }
+    @keyframes modalFadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .modal-content {
+      background-color: white;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 500px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.25);
+      position: relative;
+      animation: slideDown 0.3s ease forwards;
+    }
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+    .close-btn:hover {
+      color: #911111;
+    }
   </style>
 </head>
 <body>
@@ -181,48 +236,143 @@
   </header>
 
   <nav>
-    <button class="menu-btn active" data-target="inicio">Inicio</button>
-    <button class="menu-btn" data-target="vacunacion">Campaña de Vacunación</button>
-    <button class="menu-btn" data-target="adopciones">Adopciones</button>
-    <button class="menu-btn" data-target="denuncias">Denuncias</button>
-    <button class="menu-btn" data-target="extraviados">Animales Extraviados</button>
+    <button onclick="openModal('modalInicio')">Inicio</button>
+    <button onclick="openModal('modalVacunacion')">Campaña de Vacunación</button>
+    <button onclick="openModal('modalAdopciones')">Adopciones</button>
+    <button onclick="openModal('modalDenuncias')">Denuncias</button>
+    <button onclick="openModal('modalExtraviados')">Animales Extraviados</button>
   </nav>
 
   <div class="contenedor">
-    <section id="inicio" class="seccion active">
+    <!-- Toda la info visible siempre -->
+    <section id="inicio">
       <h2>Bienvenido a Control y Bienestar Animal</h2>
       <p>En esta plataforma puedes informarte sobre las campañas gratuitas de vacunación para mascotas, consultar los animales disponibles para adopción, realizar denuncias por maltrato animal, y reportar animales extraviados. Navega por las diferentes secciones usando el menú para participar y ayudar a nuestra comunidad.</p>
     </section>
 
-   <section id="vacunacion" class="seccion">
-  <h2>Campaña de Vacunación</h2>
-  <p>Vacuna a tu mascota del <strong>01 de junio al 17 de julio</strong> en diferentes puntos de Ixtapaluca. ¡Totalmente gratis!</p>
-  <p>Consulta los puestos oficiales en el sitio del 
-    <a href="https://www.ixtapaluca.gob.mx" target="_blank" style="color: green; font-weight: bold;">
-      Municipio de Ixtapaluca
-    </a> o visita nuestra página de 
-    <a href="https://www.facebook.com/share/1CxKh5fXhJ/" target="_blank" style="color: #1877f2; font-weight: bold;">
-      Bienestar Animal Ixtapaluca en Facebook
-    </a>.
-  </p>
+    <section id="vacunacion">
+      <h2>Campaña de Vacunación</h2>
+      <p>Vacuna a tu mascota del <strong>01 de junio al 17 de julio</strong> en diferentes puntos de Ixtapaluca. ¡Totalmente gratis!</p>
+      <p>Consulta los puestos oficiales en el sitio del 
+        <a href="https://www.ixtapaluca.gob.mx" target="_blank" style="color: green; font-weight: bold;">
+          Municipio de Ixtapaluca
+        </a> o visita nuestra página de 
+        <a href="https://www.facebook.com/share/1CxKh5fXhJ/" target="_blank" style="color: #1877f2; font-weight: bold;">
+          Bienestar Animal Ixtapaluca en Facebook
+        </a>.
+      </p>
+      <div style="margin-top: 20px;">
+        <iframe 
+          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBienestarAnimalIxtapaluca&tabs=timeline&width=500&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+          width="100%" height="300" style="border:none;overflow:hidden" 
+          scrolling="no" frameborder="0" allowfullscreen="true"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
+    </section>
 
-  <!-- Plugin de página de Facebook -->
-  <div style="margin-top: 20px;">
-    <iframe 
-      src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBienestarAnimalIxtapaluca&tabs=timeline&width=500&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-      width="100%" height="300" style="border:none;overflow:hidden" 
-      scrolling="no" frameborder="0" allowfullscreen="true"
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-    </iframe>
-  </div>
-</section>
-
-
-
-    <section id="adopciones" class="seccion">
+    <section id="adopciones">
       <h2>Adopciones</h2>
-      <button class="btn" onclick="document.getElementById('formAdopcion').style.display='block'">Registrar Adopción</button>
-      <form id="formAdopcion" style="display:none; margin-top:20px;">
+      <button class="btn" onclick="openModal('modalFormAdopcion')">Registrar Adopción</button>
+      <h3>Animales disponibles en adopción</h3>
+      <div class="animal-card">
+        <span class="etiqueta-hueso">HEMBRA</span>
+        <img src="https://placedog.net/300/300?id=10" alt="Perrita en adopción" />
+        <div class="animal-info">
+          <strong>Nombre:</strong> Daisy<br />
+          <strong>Edad:</strong> 8 meses<br />
+          <strong>Esterilizada:</strong> Sí<br />
+          <strong>Descripción:</strong> Juguetona, cariñosa y muy sociable. Ideal para familias con niños.
+        </div>
+        <button class="btn" onclick="openModal('modalFormAdoptarDaisy')">Adoptar</button>
+      </div>
+    </section>
+
+    <section id="denuncias">
+      <h2>Denunciar Maltrato Animal</h2>
+      <button class="btn" onclick="openModal('modalFormDenuncia')">Realizar Denuncia</button>
+    </section>
+
+    <section id="extraviados">
+      <h2>Animales Extraviados</h2>
+      <button class="btn" onclick="openModal('modalFormExtraviado')">Reportar animal extraviado</button>
+      <h3>Animales reportados</h3>
+      <div class="animal-card estilo-cartel">
+        <img src="https://github.com/oscarayala512/bienestar-animal/blob/main/perro.jpg?raw=true" alt="Rocky" />
+        <div class="etiqueta-hueso">MACHO</div>
+        <div class="animal-info">
+          <strong>Edad:</strong> 8 meses<br />
+          <strong>Esterilizado</strong><br />
+          <strong>Última vista:</strong> Frente al mercado San Buenaventura<br />
+          <strong>Descripción:</strong> Blanco con manchas negras, tranquilo.<br />
+          <strong>Fecha de publicación:</strong> 2025-05-27
+        </div>
+        <button class="btn" onclick="openModal('modalInfoRocky')">Tengo información</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modales -->
+
+  <!-- Modal Inicio (solo info, botón cerrar) -->
+  <div id="modalInicio" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalInicio')">&times;</button>
+      <h2>Inicio</h2>
+      <p>En esta plataforma puedes informarte sobre las campañas gratuitas de vacunación para mascotas, consultar los animales disponibles para adopción, realizar denuncias por maltrato animal, y reportar animales extraviados.</p>
+    </div>
+  </div>
+
+  <!-- Modal Vacunacion -->
+  <div id="modalVacunacion" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalVacunacion')">&times;</button>
+      <h2>Campaña de Vacunación</h2>
+      <p>Vacuna a tu mascota del <strong>01 de junio al 17 de julio</strong> en diferentes puntos de Ixtapaluca. ¡Totalmente gratis!</p>
+      <p>Consulta los puestos oficiales en el sitio del 
+        <a href="https://www.ixtapaluca.gob.mx" target="_blank" style="color: green; font-weight: bold;">
+          Municipio de Ixtapaluca
+        </a> o visita nuestra página de 
+        <a href="https://www.facebook.com/share/1CxKh5fXhJ/" target="_blank" style="color: #1877f2; font-weight: bold;">
+          Bienestar Animal Ixtapaluca en Facebook
+        </a>.
+      </p>
+      <div style="margin-top: 20px;">
+        <iframe 
+          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBienestarAnimalIxtapaluca&tabs=timeline&width=500&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+          width="100%" height="300" style="border:none;overflow:hidden" 
+          scrolling="no" frameborder="0" allowfullscreen="true"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Adopciones -->
+  <div id="modalAdopciones" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalAdopciones')">&times;</button>
+      <h2>Animales disponibles para adopción</h2>
+      <div class="animal-card">
+        <span class="etiqueta-hueso">HEMBRA</span>
+        <img src="https://placedog.net/300/300?id=10" alt="Perrita en adopción" />
+        <div class="animal-info">
+          <strong>Nombre:</strong> Daisy<br />
+          <strong>Edad:</strong> 8 meses<br />
+          <strong>Esterilizada:</strong> Sí<br />
+          <strong>Descripción:</strong> Juguetona, cariñosa y muy sociable. Ideal para familias con niños.
+        </div>
+        <button class="btn" onclick="openModal('modalFormAdoptarDaisy')">Adoptar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Form Adopcion General -->
+  <div id="modalFormAdopcion" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalFormAdopcion')">&times;</button>
+      <h2>Registrar Adopción</h2>
+      <form id="formAdopcion">
         <label for="nombreAnimalAdopcion">Nombre del animal:</label>
         <input type="text" id="nombreAnimalAdopcion" placeholder="Ej. Toby" />
         <label for="edadAnimal">Edad:</label>
@@ -243,52 +393,36 @@
         <label for="telefono">Número de contacto:</label>
         <input type="tel" id="telefono" placeholder="Ej. 555-123-4567" />
         <label><input type="checkbox" id="origenIxtapaluca" /> Es de Ixtapaluca</label>
-        <button type="button" class="btn">Publicar para adopción</button>
+        <button type="button" class="btn" onclick="enviarAdopcion()">Publicar para adopción</button>
       </form>
-<script>
-  function adoptarAnimal(nombre) {
-    // Puedes reemplazar alert por un mensaje más estilizado si lo deseas
-    alert("¡Gracias por adoptar a " + nombre + "! Pronto nos pondremos en contacto contigo.");
-    
-    // Aquí podrías ocultar el animal o marcarlo como adoptado visualmente si lo deseas
-    // Ejemplo: document.querySelector('.animal-card').style.display = 'none';
-  }
-</script>
+    </div>
+  </div>
 
-      <h3>Animales disponibles en adopción</h3>
-      <div class="animal-card">
-        <span class="etiqueta-hueso">HEMBRA</span>
-        <img src="https://placedog.net/300/300?id=10" alt="Perrita en adopción" />
-        <div class="animal-info">
-          <strong>Nombre:</strong> Daisy<br />
-          <strong>Edad:</strong> 8 meses<br />
-          <strong>Esterilizada:</strong> Sí<br />
-          <strong>Descripción:</strong> Juguetona, cariñosa y muy sociable. Ideal para familias con niños.
-        </div>
-          <button class="btn" onclick="mostrarFormulario('formAdoptarDaisy')">Adoptar</button>
+  <!-- Modal Form Adoptar Daisy -->
+  <div id="modalFormAdoptarDaisy" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalFormAdoptarDaisy')">&times;</button>
+      <h2>Adoptar a Daisy</h2>
+      <form id="formAdoptarDaisy">
+        <label for="nombreAdoptante">Tu nombre:</label>
+        <input type="text" id="nombreAdoptante" placeholder="Ej. Laura Gómez" required />
+        <label for="telefonoAdoptante">Teléfono de contacto:</label>
+        <input type="tel" id="telefonoAdoptante" placeholder="Ej. 555-789-1234" required />
+        <label for="porqueAdoptar">¿Por qué deseas adoptarlo?</label>
+        <textarea id="porqueAdoptar" rows="2" placeholder="Ej. Me encantan los perros pequeños..."></textarea>
+        <label for="ubicacionCasa">¿Dónde vivirá?</label>
+        <input type="text" id="ubicacionCasa" placeholder="Ej. San Buenaventura, casa con patio" required />
+        <button type="button" class="btn" onclick="enviarAdopcionDaisy()">Enviar solicitud</button>
+      </form>
+    </div>
+  </div>
 
-<form id="formAdoptarDaisy" class="form-fantasma" style="display:none; margin-top:10px;">
-  <label for="nombreAdoptante">Tu nombre:</label>
-  <input type="text" id="nombreAdoptante" placeholder="Ej. Laura Gómez" required />
-
-  <label for="telefonoAdoptante">Teléfono de contacto:</label>
-  <input type="tel" id="telefonoAdoptante" placeholder="Ej. 555-789-1234" required />
-
-  <label for="porqueAdoptar">¿Por qué deseas adoptarlo?</label>
-  <textarea id="porqueAdoptar" rows="2" placeholder="Ej. Me encantan los perros pequeños..."></textarea>
-
-  <label for="ubicacionCasa">¿Dónde vivirá?</label>
-  <input type="text" id="ubicacionCasa" placeholder="Ej. San Buenaventura, casa con patio" required />
-
-  <button type="button" class="btn" onclick="enviarAdopcion('formAdoptarDaisy')">Enviar solicitud</button>
-</form>
-
-      </div>
-    </section>
-
-    <section id="denuncias" class="seccion">
+  <!-- Modal Form Denuncia -->
+  <div id="modalFormDenuncia" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalFormDenuncia')">&times;</button>
       <h2>Denunciar Maltrato Animal</h2>
-      <form>
+      <form id="formDenuncia">
         <label for="denunciante">Tu nombre:</label>
         <input type="text" id="denunciante" placeholder="Ej. Juan Pérez" />
         <label for="descripcion">Descripción del hecho:</label>
@@ -297,14 +431,17 @@
         <input type="text" id="ubicacion" placeholder="Ej. Calle Robles, Col. Morelos" />
         <label for="evidencia">Evidencia (opcional):</label>
         <input type="file" id="evidencia" />
-        <button type="button" class="btn">Enviar denuncia</button>
+        <button type="button" class="btn" onclick="enviarDenuncia()">Enviar denuncia</button>
       </form>
-    </section>
+    </div>
+  </div>
 
-    <section id="extraviados" class="seccion">
-      <h2>Animales Extraviados</h2>
-      <h3>¿Deseas reportar uno?</h3>
-      <form>
+  <!-- Modal Form Extraviado -->
+  <div id="modalFormExtraviado" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalFormExtraviado')">&times;</button>
+      <h2>Reportar Animal Extraviado</h2>
+      <form id="formExtraviado">
         <label for="nombreAnimal">Nombre del animal:</label>
         <input type="text" id="nombreAnimal" placeholder="Ej. Rocky" />
         <label for="descripcionAnimal">Descripción:</label>
@@ -315,84 +452,64 @@
         <input type="file" id="fotoAnimal" />
         <label for="fechaExtravio">Fecha de publicación:</label>
         <input type="date" id="fechaExtravio" />
-        <button type="button" class="btn">Reportar extraviado</button>
+        <button type="button" class="btn" onclick="enviarExtraviado()">Reportar extraviado</button>
       </form>
-      <h3>Animales reportados</h3>
-      <div class="animal-card estilo-cartel">
-        <img src="https://github.com/oscarayala512/bienestar-animal/blob/main/perro.jpg?raw=true" alt="Rocky" />
-        <div class="etiqueta-hueso">MACHO</div>
-        <div class="animal-info">
-          <strong>Edad:</strong> 8 meses<br />
-          <strong>Esterilizado</strong><br />
-          <strong>Última vista:</strong> Frente al mercado San Buenaventura<br />
-          <strong>Descripción:</strong> Blanco con manchas negras, tranquilo.<br />
-          <strong>Fecha de publicación:</strong> 2025-05-27 <br/>
-        <button class="btn" onclick="mostrarFormulario('infoRocky')">Tengo información</button>
+    </div>
+  </div>
 
-<form id="infoRocky" class="form-fantasma" style="display:none; margin-top:10px;">
-  <label for="nombreInformante">Tu nombre:</label>
-  <input type="text" id="nombreInformante" placeholder="Ej. Juan Pérez" required />
-
-  <label for="telefonoInformante">Tu número de contacto:</label>
-  <input type="tel" id="telefonoInformante" placeholder="Ej. 555-123-4567" required />
-
-  <label for="ubicacionVista">¿Dónde lo viste?</label>
-  <input type="text" id="ubicacionVista" placeholder="Ej. Cerca del parque" required />
-
-  <label for="comentarios">Comentario adicional:</label>
-  <textarea id="comentarios" rows="2" placeholder="Algún detalle importante..."></textarea>
-
-  <button type="button" class="btn" onclick="enviarInformacion('infoRocky')">Enviar</button>
-</form>
-
-        </div>
-      </div>
-      <script>
-  function mostrarFormulario(idFormulario) {
-    const form = document.getElementById(idFormulario);
-    form.style.display = (form.style.display === 'none') ? 'block' : 'none';
-  }
-
-  function enviarInformacion(idFormulario) {
-    alert("¡Gracias por tu información! Será de gran ayuda para localizar al animal.");
-    
-    // Ocultar y resetear el formulario
-    const form = document.getElementById(idFormulario);
-    form.reset();
-    form.style.display = 'none';
-  }
-</script>
-<script>
-  function mostrarFormulario(idFormulario) {
-    const form = document.getElementById(idFormulario);
-    form.style.display = (form.style.display === 'none') ? 'block' : 'none';
-  }
-
-  function enviarAdopcion(idFormulario) {
-    alert("¡Gracias por tu interés en adoptar! Pronto nos pondremos en contacto contigo.");
-    
-    // Ocultar y limpiar el formulario
-    const form = document.getElementById(idFormulario);
-    form.reset();
-    form.style.display = 'none';
-  }
-</script>
-
-
-    </section>
+  <!-- Modal Info Rocky -->
+  <div id="modalInfoRocky" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalInfoRocky')">&times;</button>
+      <h2>Información sobre Rocky</h2>
+      <form id="formInfoRocky">
+        <label for="nombreInformante">Tu nombre:</label>
+        <input type="text" id="nombreInformante" placeholder="Ej. Juan Pérez" required />
+        <label for="telefonoInformante">Tu número de contacto:</label>
+        <input type="tel" id="telefonoInformante" placeholder="Ej. 555-123-4567" required />
+        <label for="ubicacionVista">¿Dónde lo viste?</label>
+        <input type="text" id="ubicacionVista" placeholder="Ej. Cerca del parque" required />
+        <label for="comentarios">Comentario adicional:</label>
+        <textarea id="comentarios" rows="2" placeholder="Algún detalle importante..."></textarea>
+        <button type="button" class="btn" onclick="enviarInformacion()">Enviar</button>
+      </form>
+    </div>
   </div>
 
   <script>
-    const botonesMenu = document.querySelectorAll('.menu-btn');
-    const secciones = document.querySelectorAll('.seccion');
-    botonesMenu.forEach(btn => {
-      btn.addEventListener('click', () => {
-        botonesMenu.forEach(b => b.classList.remove('active'));
-        secciones.forEach(s => s.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(btn.getAttribute('data-target')).classList.add('active');
-      });
-    });
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    function enviarAdopcion() {
+      alert("Registro de adopción enviado. ¡Gracias!");
+      document.getElementById('formAdopcion').reset();
+      closeModal('modalFormAdopcion');
+    }
+    function enviarAdopcionDaisy() {
+      alert("Solicitud para adoptar a Daisy enviada. ¡Gracias!");
+      document.getElementById('formAdoptarDaisy').reset();
+      closeModal('modalFormAdoptarDaisy');
+    }
+    function enviarDenuncia() {
+      alert("Denuncia enviada. ¡Gracias por ayudar!");
+      document.getElementById('formDenuncia').reset();
+      closeModal('modalFormDenuncia');
+    }
+    function enviarExtraviado() {
+      alert("Reporte de animal extraviado enviado. ¡Gracias!");
+      document.getElementById('formExtraviado').reset();
+      closeModal('modalFormExtraviado');
+    }
+    function enviarInformacion() {
+      alert("Información enviada. ¡Gracias por ayudar!");
+      document.getElementById('formInfoRocky').reset();
+      closeModal('modalInfoRocky');
+    }
   </script>
 </body>
 </html>
+
