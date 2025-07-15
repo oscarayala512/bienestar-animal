@@ -2,257 +2,304 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>UCBA</title>
+  <title>🐾 Unidad de Control y Bienestar Animal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f8f5f5;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeSlideIn 1s forwards;
-    }
-    @keyframes fadeSlideIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      font-family: 'Lora', serif;
+      background-color: #fcf9f6;
+      color: #2c1b1b;
     }
 
-    .estilo-cartel {
-      background: #BC955C url('https://i.imgur.com/Oe4iQhA.png') repeat;
-      border-radius: 20px;
-      padding: 15px;
-      margin: 20px auto;
-      max-width: 350px;
-      position: relative;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-      text-align: center;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
-    }
-    .estilo-cartel img {
-      width: 100%;
-      border-radius: 10px;
-      border: 6px solid #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
-    .etiqueta-hueso {
-      background: #BC955C;
-      color: #fff;
-      font-weight: bold;
-      padding: 8px 16px;
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      border-radius: 20px;
-      font-size: 14px;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-    }
-    .animal-info {
-      margin-top: 12px;
-      background: rgba(255,255,255,0.9);
-      color: #333;
-      padding: 10px;
-      border-radius: 10px;
-    }
     header {
-      background-color: #fbf5f5;
-      color: rgb(144, 14, 14);
-      padding: 20px;
-      text-align: center;
-      position: relative;
+      background-color: #fdf8f5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    header img {
-      position: absolute;
-      left: 20px;
-      top: 10px;
-      width: 80px;
-      border-radius: 8px;
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.2em;
     }
-    h1 {
-      margin: 0;
-      font-size: 24px;
-    }
+
     nav {
-      background-color: #9F2241;
       display: flex;
       justify-content: center;
-      gap: 15px;
-      padding: 10px 0;
-    }
-    nav button {
-      background-color: #235B4E;
-      color: white;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-    nav button:hover {
-      background-color: #235B4E;
-    }
-    .contenedor {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    section {
-      background: white;
-      margin-bottom: 30px;
-      padding: 20px;
-      border-radius: 10px;
-      border-left: 8px solid #9F2241;
-    }
-    h2 {
-      color: #9F2241;
-    }
-    label {
-      font-weight: bold;
-    }
-    input, textarea, select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .animal-card {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 20px;
-      background: #f9f9f9;
+      background-color: #fff;
       padding: 10px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      align-items: center;
-    }
-    .animal-card img {
-      width: 120px;
-      height: 120px;
-      border-radius: 12px;
-      object-fit: cover;
-      border: 3px solid #9F2241;
-    }
-    .btn {
-      background: #235B4E;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-    .btn:hover {
-      background: #235B4E;
-    }
-    a {
-      color: #235B4E;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    @media (max-width: 600px) {
-      header img {
-        width: 60px;
-        top: 15px;
-      }
-      h1 {
-        font-size: 18px;
-      }
-      .animal-card {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .animal-card img {
-        width: 100%;
-        height: auto;
-      }
     }
 
-    /* Modal popup */
+    nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #5b4a4a;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #8b0f3a;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+    }
+
+    .actions button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    button.filled {
+      background-color: #80142a;
+      color: white;
+      border: none;
+    }
+
+    button.outline {
+      background-color: transparent;
+      border: 2px solid #80142a;
+      color: #80142a;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 30px;
+    }
+
+    .hero h1 {
+      font-size: 2.6em;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .campaigns {
+      padding: 40px 30px;
+      background-color: #fffdfc;
+    }
+
+    .campaigns h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      max-width: 300px;
+    }
+
+    #adoptables {
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .adopt-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .adopt-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      max-width: 240px;
+    }
+
+    .adopt-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .adopt-card .info {
+      padding: 15px;
+    }
+
+    .adopt-card h3 {
+      margin: 0;
+      color: #80142a;
+    }
+
+    #adoptables p,
+    #adoptables h2,
+    #extravios p,
+    #extravios h2 {
+      margin-bottom: 10px;
+    }
+
+    #extravios {
+      padding: 60px 30px;
+      background-color: #fdf6f2;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9em;
+      background-color: #f3ece9;
+      color: #6b5c5c;
+    }
+
     .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
-      left: 0; top: 0; width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.5);
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
       overflow: auto;
-      animation: modalFadeIn 0.3s ease forwards;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease-in-out;
     }
-    @keyframes modalFadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
+
     .modal-content {
-      background-color: #DDC9A3;
-      margin: 50px auto;
+      background-color: #fff;
+      margin: 8% auto;
       padding: 20px;
-      border-radius: 12px;
-      max-width: 500px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.25);
+      border-radius: 15px;
+      max-width: 600px;
       position: relative;
-      animation: slideDown 0.3s ease forwards;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+
     .close-btn {
       position: absolute;
       top: 10px;
       right: 15px;
-      font-size: 22px;
-      font-weight: bold;
-      color: #333;
-      cursor: pointer;
-      border: none;
       background: none;
+      border: none;
+      font-size: 24px;
+      color: #aaa;
+      cursor: pointer;
     }
+
     .close-btn:hover {
-      color: #6F7271;
+      color: #000;
+    }
+
+    input[type="text"], input[type="date"], input[type="tel"], input[type="file"], textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-family: 'Lora', serif;
+    }
+
+    button.btn {
+      background-color: #80142a;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    button.btn:hover {
+      background-color: #a8193d;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
+<!-- CONTINÚA EL BODY AQUÍ COMO LO TIENES DEFINIDO -->
+
   <header>
-    <img src="https://github.com/oscarayala512/bienestar-animal/blob/main/logonuevo.jpg?raw=true" alt="Logo Ixtapaluca" />
-    <div style="padding-left: 130px;">
-      <h1>UCBA</h1>
-      <h2>UNIDAD DE CONTROL Y BIENESTAR ANIMAL</h2>
+   
+       <div class="logo">🐾 Unidad de Control y Bienestar Animal</div>
+    </div>
+  </header>
+<nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#adoptables">Adoptables</a>
+      <a href="#extravios">Extravíos</a>
+    </nav>
+    <div class="actions">
+      <button class="outline">➕ Registrar Adoptable</button>
+      <button class="filled">Reportar Extravío</button>
     </div>
   </header>
 
- <nav>
-  <button onclick="location.href='#inicio'">Inicio</button>
-  <button onclick="location.href='#vacunacion'">Campaña de Vacunación</button>
-  <button onclick="location.href='#adopciones'">Adopciones</button>
-  <button onclick="location.href='#denuncias'">Denuncias</button>
-  <button onclick="location.href='#extraviados'">Animales Extraviados</button>
-</nav>
-
-  <div class="contenedor">
-    <!-- Toda la info visible siempre -->
-    <section id="inicio">
-      <h2>Bienvenido a Control y Bienestar Animal</h2>
-      <p>En esta plataforma puedes informarte sobre las campañas gratuitas de vacunación para mascotas, consultar los animales disponibles para adopción, realizar denuncias por maltrato animal, y reportar animales extraviados. Navega por las diferentes secciones usando el menú para participar y ayudar a nuestra comunidad.</p>
+  <main>
+ <!-- Sección: Inicio -->
+    <section id="inicio" class="hero">
+      <h1>Bienvenido a la Unidad de Control y Bienestar Animal</h1>
+      <p>Tu centro de confianza para el bienestar animal. Conectamos corazones y reunimos familias.</p>
+      <div class="hero-actions">
+        <button class="filled">Adoptar un amigo</button>
+        <button class="outline">Buscar a mi mascota</button>
+      </div>
     </section>
 
-    <section id="vacunacion">
-      <h2>Campaña de Vacunación</h2>
-      <p>Vacuna a tu mascota del <strong>01 de junio al 17 de julio</strong> en diferentes puntos de Ixtapaluca. ¡Totalmente gratis!</p>
+  
+    <!-- Sección: Campañas -->
+    <section class="campaigns">
+      <h2>Campañas y Anuncios</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>📢 Campaña de Esterilización Gratuita</h3>
+          <p>Del 1 al 15 de Junio, trae a tu perro o gato para esterilización sin costo. ¡Agenda tu cita!</p>
+        </div>
+        <div class="card">
+          <h3>📢 Jornada de Vacunación Antirrábica</h3>
+          <p>Protege a tu mascota y a tu comunidad. Vacunación gratuita el próximo fin de semana en el centro cívico.</p>
+        </div>
+        <div class="card">
+          <h3>📢 Adopta, No Compres</h3>
+          <p>Este mes, todos nuestros adoptables tienen un descuento especial en su kit de bienvenida.</p>
       <p>Consulta los puestos oficiales en el sitio del 
         <a href="https://www.ixtapaluca.gob.mx" target="_blank" style="color: green; font-weight: bold;">
           Municipio de Ixtapaluca
@@ -271,19 +318,19 @@
       </div>
     </section>
 
-    <section id="adopciones">
-      <h2>Adopciones</h2>
-      <button class="btn" onclick="openModal('modalFormAdopcion')">Registrar Adopción</button>
+   <!-- Sección: Adoptables -->
+    <section id="adoptables">
+      <h2>Amigos en Adopción</h2>
+      <p>Encuentra a tu compañero de vida. Cada uno de ellos espera un hogar lleno de amor.</p>
       <h3>Animales disponibles en adopción</h3>
-      <div class="animal-card">
-        <span class="etiqueta-hueso">HEMBRA</span>
-        <img src="https://placedog.net/300/300?id=10" alt="Perrita en adopción" />
-        <div class="animal-info">
-          <strong>Nombre:</strong> Daisy<br />
-          <strong>Edad:</strong> 8 meses<br />
-          <strong>Esterilizada:</strong> Sí<br />
-          <strong>Descripción:</strong> Juguetona, cariñosa y muy sociable. Ideal para familias con niños.
-        </div>
+     <!-- Animal -->
+        <div class="adopt-card">
+          <img src="https://via.placeholder.com/400" alt="Bruno">
+          <div class="info">
+            <h3>Bruno</h3>
+            <p>🐶 Perro · Mestizo · 2 años</p>
+            <p>Amigable y juguetón, ideal para una familia activa.</p>
+          </div>
         <button class="btn" onclick="openModal('modalFormAdoptarDaisy')">Adoptar</button>
       </div>
     </section>
@@ -293,8 +340,12 @@
       <button class="btn" onclick="openModal('modalFormDenuncia')">Realizar Denuncia</button>
     </section>
 
-    <section id="extraviados">
-      <h2>Animales Extraviados</h2>
+    <!-- Sección: Extravíos -->
+    <section id="extravios">
+      <h2>Mascotas Extraviadas</h2>
+      <p>Pronto podrás consultar mascotas reportadas como perdidas.</p>
+    </section>
+  </main>
       <button class="btn" onclick="openModal('modalFormExtraviado')">Reportar animal extraviado</button>
       <h3>Animales reportados</h3>
       <div class="animal-card estilo-cartel">
@@ -510,6 +561,10 @@
       closeModal('modalInfoRocky');
     }
   </script>
+    <footer>
+    <p>© 2025 Unidad de Control y Bienestar Animal. Todos los derechos reservados.</p>
+    <p>Contacto: (123) 456-7890 | info@controlanimal.org</p>
+  </footer>
 </body>
 </html>
 
