@@ -144,9 +144,12 @@
     }
 
     .adopt-card img {
-      width: 100%;
-      height: auto;
-    }
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
 
     .adopt-card .info {
       padding: 15px;
@@ -258,19 +261,26 @@
 <!-- CONTINÚA EL BODY AQUÍ COMO LO TIENES DEFINIDO -->
 
   <header>
-   
-       <div class="logo">🐾 Unidad de Control y Bienestar Animal</div>
-    </div>
-  </header>
+  <div style="display: flex; align-items: center;">
+    <img src="https://github.com/oscarayala512/bienestar-animal/blob/main/logonuevo.jpg?raw=true" alt="Logo Ixtapaluca" style="height: 40px; margin-right: 10px;" />
+    <div class="logo">🐾 Unidad de Control y Bienestar Animal 🐾</div>
+   <img src="https://github.com/oscarayala512/bienestar-animal/blob/main/logonuevo.jpg?raw=true"
+         alt="Logo Ixtapaluca"
+         style="height: 40px; margin-left: 10px;" />
+
+  </div>
+</header>
+
 <nav>
       <a href="#inicio">Inicio</a>
       <a href="#adoptables">Adoptables</a>
       <a href="#extravios">Extravíos</a>
     </nav>
     <div class="actions">
-      <button class="outline">➕ Registrar Adoptable</button>
-      <button class="filled">Reportar Extravío</button>
-    </div>
+  <button class="outline" onclick="openModal('modalFormAdopcion')">➕ Registrar Adoptable</button>
+  <button class="filled" onclick="openModal('modalFormExtraviado')">📍 Reportar Extravío</button>
+</div>
+
   </header>
 
   <main>
@@ -279,9 +289,10 @@
       <h1>Bienvenido a la Unidad de Control y Bienestar Animal</h1>
       <p>Tu centro de confianza para el bienestar animal. Conectamos corazones y reunimos familias.</p>
       <div class="hero-actions">
-        <button class="filled">Adoptar un amigo</button>
-        <button class="outline">Buscar a mi mascota</button>
-      </div>
+  <a href="#adoptables"><button class="filled">Adoptar un amigo</button></a>
+  <a href="#extravios"><button class="outline">Buscar a mi mascota</button></a>
+</div>
+
     </section>
 
   
