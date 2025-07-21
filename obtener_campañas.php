@@ -6,17 +6,20 @@ $sql = "SELECT colonia, fecha, horario, ubicacion, vacunas FROM campañas";
 $resultado = $conn->query($sql);
 
 $campañas = [];
-//registro de campañas 
-while ($fila = $resultado->fetch_assoc()) {
-    $campañas[] = [
-        "colonia" => $fila["colonia"],
-        "fecha" => date("d/m/Y", strtotime($fila["fecha"])),
-        "horario" => $fila["horario"],
-        "ubicacion" => $fila["ubicacion"],
-        "vacunas" => $fila["vacunas"]
-    ];
+
+if ($resultado && $resultado->num_rows > 0) {
+    while ($fila = $resultado->fetch_assoc()) {
+        $campañas[] = [
+            "colonia" => $fila["colonia"],
+            "fecha" => date("d/m/Y", strtotime($fila["fecha"])),
+            "horario" => $fila["horario"],
+            "ubicacion" => $fila["ubicacion"],
+            "vacunas" => $fila["vacunas"]
+        ];
+    }
 }
 
 echo json_encode($campañas);
 $conn->close();
 ?>
+
