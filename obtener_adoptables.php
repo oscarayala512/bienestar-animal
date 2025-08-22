@@ -6,7 +6,6 @@ $sql = "SELECT nombre, especie, raza, edad, descripcion, foto FROM adoptables";
 $resultado = $conn->query($sql);
 
 $adoptables = [];
-
 while ($fila = $resultado->fetch_assoc()) {
     $adoptables[] = [
         "nombre" => $fila["nombre"],
