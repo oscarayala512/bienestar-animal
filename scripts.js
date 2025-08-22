@@ -1,4 +1,3 @@
-// Cargar campañas de vacunación desde PHP
 function cargarCampañasVacunacion() {
     fetch('php/obtener_campañas.php')
         .then(res => res.json())
@@ -25,12 +24,9 @@ function cargarCampañasVacunacion() {
 
             contenedor.appendChild(lista);
         })
-        .catch(error => {
-            console.error("Error al cargar campañas:", error);
-        });
+        .catch(error => console.error("Error al cargar campañas:", error));
 }
 
-// Cargar animales adoptables desde PHP
 function cargarAnimalesAdoptables() {
     fetch('php/obtener_adoptables.php')
         .then(res => res.json())
@@ -58,12 +54,9 @@ function cargarAnimalesAdoptables() {
 
             contenedor.appendChild(lista);
         })
-        .catch(error => {
-            console.error("Error al cargar adoptables:", error);
-        });
+        .catch(error => console.error("Error al cargar adoptables:", error));
 }
 
-// Mostrar la sección correspondiente al seleccionar una opción
 function mostrarFormulario() {
     let opcion = document.getElementById('tipoAccion').value;
     document.querySelectorAll('.seccion').forEach(div => div.style.display = 'none');
