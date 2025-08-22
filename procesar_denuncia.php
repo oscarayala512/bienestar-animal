@@ -8,10 +8,7 @@ $evidencia = '';
 
 if (isset($_FILES['evidenciaDenuncia']) && $_FILES['evidenciaDenuncia']['error'] === 0) {
     $directorio = '../uploads/denuncias/';
-
-    if (!is_dir($directorio)) {
-        mkdir($directorio, 0777, true);
-    }
+    if (!is_dir($directorio)) mkdir($directorio, 0777, true);
 
     $evidencia = basename($_FILES['evidenciaDenuncia']['name']);
     $ruta = $directorio . $evidencia;
@@ -24,20 +21,12 @@ if (isset($_FILES['evidenciaDenuncia']) && $_FILES['evidenciaDenuncia']['error']
 
 $sql = "INSERT INTO denuncias (nombre_denunciante, descripcion, ubicacion, evidencia) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-
-if (!$stmt) {
-    echo "Error en la preparación de la consulta: " . $conn->error;
-    exit;
-}
-
 $stmt->bind_param("ssss", $nombre, $descripcion, $ubicacion, $evidencia);
 
-if ($stmt->execute()) {
-    echo "Denuncia registrada exitosamente.";
-} else {
-    echo "Error al registrar la denuncia: " . $stmt->error;
-}
+if ($stmt->execute()) echo "Denuncia registrada exitosamente.";
+else echo "Error al registrar la denuncia: " . $stmt->error;
 
 $stmt->close();
 $conn->close();
 ?>
+
