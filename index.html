@@ -382,12 +382,12 @@
     function enviarAdopcionDaisy() { alert("Solicitud enviada. ¡Gracias!"); document.getElementById('formAdoptarDaisy').reset(); closeModal('modalFormAdoptarDaisy'); }
     function enviarDenuncia() { alert("Denuncia enviada. ¡Gracias!"); document.getElementById('formDenuncia').reset(); closeModal('modalFormDenuncia'); }
   </script>
-  <!-- MODAL: Registrar Adoptable -->
+ <!-- MODAL: Registrar Adoptable -->
 <div id="modalFormAdopcion" class="modal">
   <div class="modal-content">
     <button class="close-btn" onclick="closeModal('modalFormAdopcion')">&times;</button>
     <h2>Registrar Adoptable</h2>
-    <form id="formAdopcion" onsubmit="event.preventDefault(); enviarAdopcion();">
+    <form id="formAdopcion" enctype="multipart/form-data" onsubmit="event.preventDefault(); enviarAdopcion();">
       <label>Nombre del animal</label>
       <input type="text" required />
       <label>Especie</label>
@@ -403,8 +403,8 @@
       <input type="text" required />
       <label>Descripción</label>
       <textarea rows="4" required></textarea>
-      <label>Fotografía (URL)</label>
-      <input type="url" required />
+      <label>Fotografía</label>
+      <input type="file" accept="image/*" required />
       <label>Contacto</label>
       <input type="text" required />
       <button type="submit" class="btn">Registrar</button>
@@ -417,7 +417,7 @@
   <div class="modal-content">
     <button class="close-btn" onclick="closeModal('modalFormExtraviado')">&times;</button>
     <h2>Reportar Extravío</h2>
-    <form id="formExtraviado" onsubmit="event.preventDefault(); enviarAdopcion();">
+    <form id="formExtraviado" enctype="multipart/form-data" onsubmit="event.preventDefault(); enviarAdopcion();">
       <label>Nombre del animal</label>
       <input type="text" required />
       <label>Última ubicación</label>
@@ -426,14 +426,15 @@
       <input type="date" required />
       <label>Descripción</label>
       <textarea rows="4" required></textarea>
-      <label>Fotografía (URL)</label>
-      <input type="url" required />
+      <label>Fotografía</label>
+      <input type="file" accept="image/*" required />
       <label>Teléfono de contacto</label>
       <input type="text" required />
       <button type="submit" class="btn">Reportar</button>
     </form>
   </div>
 </div>
+
 
 <!-- MODAL: Adoptar Daisy (ejemplo de solicitud de adopción) -->
 <div id="modalFormAdoptarDaisy" class="modal">
@@ -473,7 +474,3 @@
 
 </body>
 </html>
-
-
-
-
