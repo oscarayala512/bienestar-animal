@@ -6,7 +6,6 @@ $sql = "SELECT colonia, fecha, horario, ubicacion, vacunas FROM campañas";
 $resultado = $conn->query($sql);
 
 $campañas = [];
-
 if ($resultado && $resultado->num_rows > 0) {
     while ($fila = $resultado->fetch_assoc()) {
         $campañas[] = [
@@ -22,4 +21,3 @@ if ($resultado && $resultado->num_rows > 0) {
 echo json_encode($campañas);
 $conn->close();
 ?>
-
