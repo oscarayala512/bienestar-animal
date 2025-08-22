@@ -8,10 +8,7 @@ $foto = '';
 
 if (isset($_FILES['fotoAnimal']) && $_FILES['fotoAnimal']['error'] === 0) {
     $directorio = '../uploads/extraviados/';
-
-    if (!is_dir(filename: $directorio)) {
-        mkdir($directorio, 0777, true);
-    }
+    if (!is_dir($directorio)) mkdir($directorio, 0777, true);
 
     $foto = basename($_FILES['fotoAnimal']['name']);
     $ruta = $directorio . $foto;
@@ -24,21 +21,13 @@ if (isset($_FILES['fotoAnimal']) && $_FILES['fotoAnimal']['error'] === 0) {
 
 $sql = "INSERT INTO extraviados (nombre_animal, descripcion, ultima_ubicacion, foto) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-
-if (!$stmt) {
-    echo "Error en la preparación de la consulta: " . $conn->error;
-    exit;
-}
-
 $stmt->bind_param("ssss", $nombre, $descripcion, $ubicacion, $foto);
 
-if ($stmt->execute()) {
-    echo "Reporte de animal extraviado registrado exitosamente.";
-} else {
-    echo "Error al registrar el reporte: " . $stmt->error;
-}
+if ($stmt->execute()) echo "Reporte de animal extraviado registrado exitosamente.";
+else echo "Error al registrar el reporte: " . $stmt->error;
 
 $stmt->close();
 $conn->close();
 ?>
+
 
